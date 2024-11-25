@@ -10,6 +10,8 @@ layout: default
 
 
 <h2>Interactive Generative Art</h2>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script> //loads p5 library
+
 <script>
 
  let size = 50; //preset size
@@ -17,6 +19,10 @@ layout: default
 function setup() {
   createCanvas(400, 400);
 }
+
+function draw() {
+    //not needed to draw but for p5
+  }
 
 
 function mousePressed() { //when ever the mouse is clicked a random shape will appear

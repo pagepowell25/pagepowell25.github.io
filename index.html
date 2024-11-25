@@ -9,4 +9,55 @@ layout: default
 </p>
 
 
+Generative Art: 
+
+let size = 50; //preset size
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+
+function mousePressed() { //when ever the mouse is clicked a random shape will appear
+  let shapeType = floor(random(4)); //Chooses a random number between 0 and 3 for shapes, and each number represents a different shape
+  let x = mouseX;
+  let y = mouseY;
+
+  // Generates random RGB values for each shape generated
+  let r = random(255);
+  let g = random(255);
+  let b = random(255);
+
+  // Set the random fill color
+  fill(r, g, b);
+ 
+
+  switch (shapeType) { // Different shapes that could be produced on each mouse click
+    case 0:
+      ellipse(x, y, size, size); // Circle
+      break;
+    case 1:
+      rect(x, y, size, size); // Square
+      break;
+    case 2:
+      triangle(x, y, x + size, y, x, y + size); //Triangle
+      break;
+    case 3:
+      let x2 = x + random(-size, size); //produces random line
+      let y2 = y + random(-size, size);
+      line(x, y, x2, y2);
+      break;
+  }
+}
+
+function keyPressed() {  //when the up and down arrows are pressed the user can change the shape's size
+  if (keyCode === UP_ARROW) {
+    size += 2; // Increases size by 2 everytime up arrow is pressed
+  } else if (keyCode === DOWN_ARROW) {
+    size = max(10, size - 2); // Decreases size by 2 everytime down arrow is pressed
+  }
+}
+
+
+
 

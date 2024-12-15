@@ -19,7 +19,7 @@ layout: default
 
 <script>
 
- let size = 50; //preset size
+let size = 50; //preset size
 
 function setup() {
   createCanvas(700, 500);
@@ -31,9 +31,23 @@ function draw() {
 }
 
 function mousePressed() { //when ever the mouse is clicked a random shape will appear
-  let shapeType = floor(random(4)); //Chooses a random number between 0 and 3 for shapes, and each number represents a different shape
-  let x = mouseX;
-  let y = mouseY;
+  drawRandomShape(mouseX, mouseY); // Draw a random shape at the mouse position
+}
+
+function mouseDragged() { //when the mouse is dragged, the object is duplicated
+  drawRandomShape(mouseX, mouseY); // Draw a random shape at the mouse position
+}
+
+function keyPressed() {  //when the "a" and "d" keys are pressed the user can change the shape's size
+  if (key === 'd' || key === 'D') { // Checks if the 'D' key is pressed
+    size = max(10, size - 2); // Decreases size by 2 every time 'D' is pressed
+  } else if (key === 'a' || key === 'A') { // Checks if the 'A' key is pressed
+    size += 2; // Increases size by 2 every time 'A' is pressed
+  }
+}
+
+function drawRandomShape(x, y) {
+  let shapeType = floor(random(4)); // Chooses a random number between 0 and 3 for shapes, and each number represents a different shape
 
   // Generates random RGB values for each shape generated
   let r = random(255);
@@ -61,11 +75,4 @@ function mousePressed() { //when ever the mouse is clicked a random shape will a
   }
 }
 
-function keyPressed() {  //when the "a" and "d" keys are pressed the user can change the shape's size
-  if (key === 'd' || key === 'D') { // Checks if the 'D' key is pressed
-    size = max(10, size - 2); // Decreases size by 2 every time 'D' is pressed
-  } else if (key === 'a' || key === 'A') { // Checks if the 'A' key is pressed
-    size += 2; // Increases size by 2 every time 'A' is pressed
-  }
-}
  </script>
